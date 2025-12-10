@@ -20,6 +20,7 @@ public class Main {
         try {
             ApplicationRunner runner = new ApplicationRunner();
             runner.run();
+            System.out.println("Hello world!");
         } catch (Exception e) {
             logger.fatal("Критическая ошибка при запуске приложения: {}", e.getMessage(), e);
             System.err.println("Критическая ошибка: " + e.getMessage());
