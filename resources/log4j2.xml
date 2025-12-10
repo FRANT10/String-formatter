@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <!-- Определяем переменные для путей и форматов -->
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="CONSOLE_PATTERN">%d{HH:mm:ss.SSS} [%-5level] %logger{20} - %msg%n</Property>
+        <Property name="LOG_DIR">logs</Property>
+        <Property name="APP_LOG_FILE">word-processor.log</Property>
+        <Property name="ERROR_LOG_FILE">word-processor-error.log</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Console Appender для вывода в консоль -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_PATTERN}"/>
+        </Console>
+
+        <!-- Rolling File Appender для основного лога -->
+        <RollingFile name="FileAppender"
+                     fileName="${LOG_DIR}/${APP_LOG_FILE}"
+                     filePattern="${LOG_DIR}/${APP_LOG_FILE}.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Ротация по времени -->
+                <TimeBasedTriggeringPolicy />
+                <!-- Ротация по размеру -->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <!-- Максимум 10 файлов по 10MB каждый -->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- Отдельный Appender для ошибок -->
+        <RollingFile name="ErrorFileAppender"
+                     fileName="${LOG_DIR}/${ERROR_LOG_FILE}"
+                     filePattern="${LOG_DIR}/${ERROR_LOG_FILE}.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <!-- Только ERROR и FATAL логи -->
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+        <!-- Async Appender для повышения производительности -->
+        <Async name="AsyncAppender" includeLocation="true">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Async>
+
+        <!-- Appender для отладочной информации (только при DEBUG) -->
+        <RollingFile name="DebugFileAppender"
+                     fileName="${LOG_DIR}/word-processor-debug.log"
+                     filePattern="${LOG_DIR}/word-processor-debug.log.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Логгер для главного класса -->
+        <Logger name="main.Main" level="INFO" additivity="false">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="AsyncAppender"/>
+            <AppenderRef ref="DebugFileAppender" level="DEBUG"/>
+        </Logger>
+
+        <!-- Логгер для сервисного слоя -->
+        <Logger name="service.WordService" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="AsyncAppender"/>
+            <AppenderRef ref="DebugFileAppender"/>
+        </Logger>
+
+        <!-- Логгер для валидации -->
+        <Logger name="validator.InputValidator" level="INFO" additivity="false">
+            <AppenderRef ref="Console" level="WARN"/>
+            <AppenderRef ref="AsyncAppender"/>
+        </Logger>
+
+        <!-- Логгер для утилит -->
+        <Logger name="util.ConsoleInput" level="INFO" additivity="false">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="AsyncAppender"/>
+        </Logger>
+
+        <!-- Логгер для исключений -->
+        <Logger name="exception" level="ERROR" additivity="false">
+            <AppenderRef ref="ErrorFileAppender"/>
+            <AppenderRef ref="Console" level="ERROR"/>
+        </Logger>
+
+        <!-- Корневой логгер -->
+        <Root level="INFO">
+            <AppenderRef ref="Console" level="INFO"/>
+            <AppenderRef ref="AsyncAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

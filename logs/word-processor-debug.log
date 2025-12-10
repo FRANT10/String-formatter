@@ -1,0 +1,52 @@
+2025-11-27 23:10:42.234 [main] INFO  main.Main - Запуск приложения Word Processor
+2025-11-27 23:11:03.776 [main] DEBUG service.WordService - Начало обработки: строка='mama', N=3, L=8
+2025-11-27 23:11:03.777 [main] DEBUG service.WordService - Обрезанная строка: 'mama'
+2025-11-27 23:11:03.778 [main] DEBUG service.WordService - Полная строка с 3 копиями: 'mama, mama, mama' (длина: 16)
+2025-11-27 23:11:03.779 [main] DEBUG service.WordService - Последняя запятая до позиции 8: 4
+2025-11-27 23:11:03.780 [main] INFO  service.WordService - Обрезано по последней запятой: 'mama' (длина: 4)
+2025-11-27 23:11:03.785 [main] INFO  main.Main - Успешная обработка способом 1: text='mama', copies=3, lengthLimit=8 -> 'mama'
+2025-11-27 23:11:03.786 [main] DEBUG service.WordService - Встроенный копировщик: строка='mama', N=3, L=8
+2025-11-27 23:11:03.787 [main] DEBUG service.WordService - Начало обработки: строка='mama', N=3, L=8
+2025-11-27 23:11:03.787 [main] DEBUG service.WordService - Обрезанная строка: 'mama'
+2025-11-27 23:11:03.788 [main] DEBUG service.WordService - Полная строка с 3 копиями: 'mama, mama, mama' (длина: 16)
+2025-11-27 23:11:03.789 [main] DEBUG service.WordService - Последняя запятая до позиции 8: 4
+2025-11-27 23:11:03.789 [main] INFO  service.WordService - Обрезано по последней запятой: 'mama' (длина: 4)
+2025-11-27 23:11:03.789 [main] INFO  service.WordService - Встроенный копировщик вернул: 'mama'
+2025-11-27 23:11:03.791 [main] INFO  main.Main - Успешная обработка способом 2: text='mama', copies=3, lengthLimit=8 -> 'mama'
+2025-11-27 23:11:42.217 [main] DEBUG service.WordService - Начало обработки: строка='mama', N=3, L=199
+2025-11-27 23:11:42.218 [main] DEBUG service.WordService - Обрезанная строка: 'mama'
+2025-11-27 23:11:42.218 [main] DEBUG service.WordService - Полная строка с 3 копиями: 'mama, mama, mama' (длина: 16)
+2025-11-27 23:11:42.218 [main] INFO  service.WordService - Результат умещается в лимит L=199, возвращаем полную строку
+2025-11-27 23:11:42.219 [main] INFO  main.Main - Успешная обработка способом 1: text='mama', copies=3, lengthLimit=199 -> 'mama, mama, mama'
+2025-11-27 23:11:42.219 [main] DEBUG service.WordService - Встроенный копировщик: строка='mama', N=3, L=199
+2025-11-27 23:11:42.219 [main] DEBUG service.WordService - Начало обработки: строка='mama', N=3, L=199
+2025-11-27 23:11:42.221 [main] DEBUG service.WordService - Обрезанная строка: 'mama'
+2025-11-27 23:11:42.221 [main] DEBUG service.WordService - Полная строка с 3 копиями: 'mama, mama, mama' (длина: 16)
+2025-11-27 23:11:42.221 [main] INFO  service.WordService - Результат умещается в лимит L=199, возвращаем полную строку
+2025-11-27 23:11:42.221 [main] INFO  service.WordService - Встроенный копировщик вернул: 'mama, mama, mama'
+2025-11-27 23:11:42.221 [main] INFO  main.Main - Успешная обработка способом 2: text='mama', copies=3, lengthLimit=199 -> 'mama, mama, mama'
+2025-11-27 23:11:52.342 [main] INFO  main.Main - Завершение работы приложения
+2025-11-27 23:20:41.125 [main] INFO  main.Main - Инициализация приложения Word Processor
+2025-11-27 23:21:17.541 [main] DEBUG service.WordService - Начало обработки: строка='ьфьф', N=2, L=100
+2025-11-27 23:21:17.543 [main] DEBUG service.WordService - Обрезанная строка: 'ьфьф'
+2025-11-27 23:21:17.543 [main] DEBUG service.WordService - Полная строка с 2 копиями: 'ьфьф, ьфьф' (длина: 10)
+2025-11-27 23:21:17.544 [main] INFO  service.WordService - Результат умещается в лимит L=100, возвращаем полную строку
+2025-11-27 23:21:17.546 [main] DEBUG service.WordService - Встроенный копировщик: строка='ьфьф', N=2, L=100
+2025-11-27 23:21:17.547 [main] DEBUG service.WordService - Начало обработки: строка='ьфьф', N=2, L=100
+2025-11-27 23:21:17.547 [main] DEBUG service.WordService - Обрезанная строка: 'ьфьф'
+2025-11-27 23:21:17.548 [main] DEBUG service.WordService - Полная строка с 2 копиями: 'ьфьф, ьфьф' (длина: 10)
+2025-11-27 23:21:17.548 [main] INFO  service.WordService - Результат умещается в лимит L=100, возвращаем полную строку
+2025-11-27 23:21:17.549 [main] INFO  service.WordService - Встроенный копировщик вернул: 'ьфьф, ьфьф'
+2025-11-27 23:27:24.000 [main] INFO  main.Main - Инициализация приложения Word Processor
+2025-11-27 23:27:32.671 [main] DEBUG service.WordService - Начало обработки: строка='ф', N=2, L=1
+2025-11-27 23:27:32.671 [main] DEBUG service.WordService - Обрезанная строка: 'ф'
+2025-11-27 23:27:32.672 [main] DEBUG service.WordService - Полная строка с 2 копиями: 'ф, ф' (длина: 4)
+2025-11-27 23:27:32.672 [main] DEBUG service.WordService - Последняя запятая до позиции 1: 1
+2025-11-27 23:27:32.673 [main] INFO  service.WordService - Обрезано по последней запятой: 'ф' (длина: 1)
+2025-11-27 23:27:32.674 [main] DEBUG service.WordService - Встроенный копировщик: строка='ф', N=2, L=1
+2025-11-27 23:27:32.675 [main] DEBUG service.WordService - Начало обработки: строка='ф', N=2, L=1
+2025-11-27 23:27:32.675 [main] DEBUG service.WordService - Обрезанная строка: 'ф'
+2025-11-27 23:27:32.675 [main] DEBUG service.WordService - Полная строка с 2 копиями: 'ф, ф' (длина: 4)
+2025-11-27 23:27:32.676 [main] DEBUG service.WordService - Последняя запятая до позиции 1: 1
+2025-11-27 23:27:32.676 [main] INFO  service.WordService - Обрезано по последней запятой: 'ф' (длина: 1)
+2025-11-27 23:27:32.676 [main] INFO  service.WordService - Встроенный копировщик вернул: 'ф'
